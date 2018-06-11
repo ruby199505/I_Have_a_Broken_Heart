@@ -56,9 +56,9 @@ class Game:
 
         # shooting the moon (豬羊變色)
         if 26 in scores:
-            i = scores.index(26)
-            scores = [26] * 4
-            scores[i] = 0
+            winner = scores.index(26)
+            for i in range(4):
+                scores[i] = 0 if i == winner else 26
             logging.info('Shooting the moon (豬羊變色)')
             logging.info(scores)
 
