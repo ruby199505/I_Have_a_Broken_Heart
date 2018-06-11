@@ -46,11 +46,30 @@ class Card:
         else:
             return _suit[self.suit] < _suit[other.suit]
 
+    def __le__(self, other):
+        if self.suit == other.suit:
+            return _number[self.number] <= _number[other.number]
+        else:
+            return _suit[self.suit] < _suit[other.suit]
+
     def __gt__(self, other):
         if self.suit == other.suit:
             return _number[self.number] > _number[other.number]
         else:
             return _suit[self.suit] > _suit[other.suit]
+
+    def __ge__(self, other):
+        if self.suit == other.suit:
+            return _number[self.number] >= _number[other.number]
+        else:
+            return _suit[self.suit] > _suit[other.suit]
+
+    def to_json(self):
+        return {'suit': self.suit, 'number': self.number}
+
+    @classmethod
+    def from_json(cls, json_obj):
+        return cls(json_obj['suit'], json_obj['number'])
 
 
 _number = {
